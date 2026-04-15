@@ -6,20 +6,20 @@ export function Header(){
             <div class="row text-center align-items-center">
                 
                 <div class="col px-0">
-                    <a href="#" class="text-decoration-none d-flex flex-column align-items-center transition" style="color: #f68b1e;">
+                    <a data-link href="/member" class="text-decoration-none d-flex flex-column align-items-center transition" style="color: #f68b1e;">
                         <i class="bi bi-house-door-fill fs-4"></i>
                         <span style="font-size: 0.65rem; font-weight: 700;">Home</span>
                     </a>
                 </div>
 
-                <div class="col px-0">
+                <a data-link href="/foodbasket"  class="col px-0">
                     <a href="#" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
                         <i class="bi bi-basket3 fs-4"></i>
                         <span style="font-size: 0.65rem; font-weight: 600;">Basket</span>
                     </a>
-                </div>
+                </a>
 
-                <div class="col px-0">
+                <a data-link href="/transfer" class="col px-0">
                     <div class="position-relative" style="top: -20px;">
                         <button class="btn btn-warning rounded-circle shadow-lg d-flex align-items-center justify-content-center mx-auto border-4 border-white" 
                                 style="width: 55px; height: 55px; background-color: #f68b1e; color: white;">
@@ -27,14 +27,14 @@ export function Header(){
                         </button>
                         <span class="d-block mt-1 text-dark fw-bold" style="font-size: 0.65rem;">Transfer</span>
                     </div>
-                </div>
+                </a>
 
-                <div class="col px-0">
+                <a data-link href="/crypto"  class="col px-0">
                     <a href="#" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
                         <i class="bi bi-currency-bitcoin fs-4"></i>
                         <span style="font-size: 0.65rem; font-weight: 600;">Crypto</span>
                     </a>
-                </div>
+                </a>
 
                 <div class="col px-0">
                     <a data-link href="/profile" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
