@@ -1,3 +1,5 @@
+import { Header } from "./header.js";
+
 export function FoodBasketPage() {
     return /*html*/`
     <div class="container-fluid p-4">
@@ -286,6 +288,7 @@ export function FoodBasketPackages() {
             background-color: #fff9ef !important;
         }
     </style>
+    ${Header()}
     `;
 }
 

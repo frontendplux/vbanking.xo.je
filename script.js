@@ -1,9 +1,13 @@
 import { AboutUsPage } from "./page/aboutus.js";
 import { APIPage } from "./page/api.js";
+import { Error404Page, GeneralError404Page, Normal404Page } from "./page/auth/404.js";
 import { ForgotPassword } from "./page/auth/forget-pass.js";
-import { Login } from "./page/auth/login.js";
+import { Login_phone, LoginPhoneFunction } from "./page/auth/login-phone.js";
+import { Login, LoginFunction } from "./page/auth/login.js";
 import { PasscodeEntry, passcodeEntryFunction } from "./page/auth/passcode.js";
-import { SignUp } from "./page/auth/signup.js";
+import { VerifyEmail, verifyEmailFunction } from "./page/auth/signup-2.js";
+import { Welcome, welcomeFunction } from "./page/auth/signup-3.js";
+import { SignUp, submitSignup } from "./page/auth/signup.js";
 import { Home } from "./page/home.js";
 import { AirtimePage, DataPage } from "./page/member/airtime/home.js";
 import { ConfirmPurchase } from "./page/member/airtime/payment.js";
@@ -31,6 +35,125 @@ import { TransferPage } from "./page/member/transfer/home.js";
 import { MyWalletPage } from "./page/member/wallet/home.js";
 import { PrivacyPolicyPage } from "./page/privacypolicy.js";
 import { TermsConditionsPage } from "./page/terms-and-condition.js";
+
+
+
+export const company={
+    name:"pygg",
+    logo:"/upload/icon/pygg.png",
+    server:"/api/main.php",
+    atmLogo:"/upload/icon/atm.png",
+    aboutImg:"/upload/icon/about.png",
+    url:"https://pygg.com.ng"
+}
+
+
+export const toggleNav = (color = '#1877f2', title = 'Notification', message = 'New update available') => {
+    // 1. Create/Ensure a container for stacking exists
+    let stackContainer = document.getElementById('mflow-toast-stack');
+    if (!stackContainer) {
+        stackContainer = document.createElement('div');
+        stackContainer.id = 'mflow-toast-stack';
+        // Fixed at top, centered, and Z-indexed to the moon
+        stackContainer.className = "position-fixed top-0 start-0 end-0 p-4 d-flex flex-column align-items-center justify-content-center gap-3";
+        stackContainer.style.zIndex = "9999";
+        stackContainer.style.pointerEvents = "none";
+        document.body.appendChild(stackContainer);
+    }
+
+    // 2. Create the unique Toast element
+    const toast = document.createElement('div');
+    toast.className = "w-100 mw-sm translate-middle-y opacity-0";
+    toast.style.transition = "all 0.5s cubic-bezier(0.23,1,0.32,1)";
+    toast.style.pointerEvents = "auto";
+    
+    // Internal HTML with monieFlow Glassmorphism
+    toast.innerHTML = `
+        <div class="bg-white col-12 col-lg-5 bg-opacity-90 border border-white shadow-lg rounded-4 p-4 d-flex align-items-center gap-4 border-start mx-auto" style="backdrop-filter: blur(20px); border-left: 4px solid ${color};">
+            <div class="d-flex align-items-center justify-content-center flex-shrink-0 rounded-3 shadow-sm" style="width: 40px; height: 40px; background-color: ${color}20;">
+                <div class="rounded-circle" style="width: 12px; height: 12px; background-color: ${color}; animation: pulse 1.5s infinite;"></div>
+            </div>
+            <div class="flex-grow-1">
+                <h6 class="text-uppercase fw-bold text-muted mb-1" style="font-size: 11px; letter-spacing: 1px;">${title}</h6>
+                <p class="fw-light text-dark mb-0 text-wrap" style="font-size: 14px;">${message}</p>
+
+            </div>
+            <button onclick="this.parentElement.parentElement.remove()" class="btn btn-link text-muted p-0" style="transition: color 0.3s;">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M6 18L18 6M6 6l12 12"/>
+                </svg>
+            </button>
+        </div>
+    `;
+
+    // 3. Add to stack
+    stackContainer.prepend(toast);
+
+    // 4. Animate "Drop"
+    setTimeout(() => {
+        toast.classList.remove('translate-middle-y', 'opacity-0');
+        toast.style.transform = "translateY(0)";
+        toast.style.opacity = "1";
+    }, 10);
+
+    // 5. Automatic "Return" (Remove) after 4 seconds
+    setTimeout(() => {
+        toast.style.transform = "translateY(-10px)";
+        toast.style.opacity = "0";
+        setTimeout(() => toast.remove(), 500);
+    }, 4000);
+};
+
+
+export function SEO({
+  title = "Pygg - Smart Banking App",
+  description = "Pygg is a secure digital banking app in Nigeria. Send money, pay bills, and manage your finances بسهولة.",
+  keywords = "banking app Nigeria, send money Nigeria, fintech Nigeria, Pygg",
+  image = "/upload/icon/pygg.png",
+  url = "https://pygg.com.ng",
+  type = "website"
+} = {}) {
+
+  // Title
+  document.title = title;
+
+  // Helper function
+  const setMeta = (attr, name, content) => {
+    let element = document.querySelector(`meta[${attr}="${name}"]`);
+    if (!element) {
+      element = document.createElement("meta");
+      element.setAttribute(attr, name);
+      document.head.appendChild(element);
+    }
+    element.setAttribute("content", content);
+  };
+
+  // Basic SEO
+  setMeta("name", "description", description);
+  setMeta("name", "keywords", keywords);
+
+  // Open Graph (Facebook, WhatsApp, LinkedIn)
+  setMeta("property", "og:title", title);
+  setMeta("property", "og:description", description);
+  setMeta("property", "og:image", image);
+  setMeta("property", "og:url", url);
+  setMeta("property", "og:type", type);
+
+  // Twitter
+  setMeta("name", "twitter:card", "summary_large_image");
+  setMeta("name", "twitter:title", title);
+  setMeta("name", "twitter:description", description);
+  setMeta("name", "twitter:image", image);
+
+  // Canonical
+  let link = document.querySelector("link[rel='canonical']");
+  if (!link) {
+    link = document.createElement("link");
+    link.setAttribute("rel", "canonical");
+    document.head.appendChild(link);
+  }
+  link.setAttribute("href", url);
+}
 
 export const router = (path) => {
     const current = window.location.pathname;
@@ -99,6 +222,7 @@ async function loadPage(path) {
     // console.log(params); // { c: "mobile-accessories" }
     const app = document.getElementById('app');
 
+
     const url='/'+path.split('/')[1];
     const url2=path.split('/')[2] ? `/${path.split('/')[2]}` : '/';
     switch (url) {
@@ -106,8 +230,41 @@ async function loadPage(path) {
             app.innerHTML= Home();
             break;
 
-        case '/login':
-            app.innerHTML= Login();
+        case '/auth':
+            switch (url2) {
+
+                case '/':
+                case '/login':
+                      app.innerHTML= Login();
+                      LoginFunction();
+                    break;
+                
+                case '/login-phone':
+                    app.innerHTML=Login_phone();
+                    LoginPhoneFunction();
+                    break;
+                
+                
+                case '/signup':
+                    app.innerHTML=SignUp();
+                    submitSignup();
+                    break;    
+
+                case '/sigup-2':
+                    app.innerHTML=VerifyEmail();
+                    verifyEmailFunction();
+                    break;
+                
+                
+                case '/signup-3':
+                    app.innerHTML=Welcome();
+                    welcomeFunction();
+                    break;
+
+                default:
+                    app.innerHTML=Normal404Page();
+                    break;
+            }
             break;
         case '/signup':
             app.innerHTML= SignUp();

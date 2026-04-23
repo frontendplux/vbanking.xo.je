@@ -12,29 +12,29 @@ export function Header(){
                     </a>
                 </div>
 
-                <a data-link href="/foodbasket"  class="col px-0">
-                    <a href="#" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
+                <div class="col px-0">
+                    <a data-link href="/foodbasket" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
                         <i class="bi bi-basket3 fs-4"></i>
                         <span style="font-size: 0.65rem; font-weight: 600;">Basket</span>
                     </a>
-                </a>
+                </div>
 
-                <a data-link href="/transfer" class="col px-0">
-                    <div class="position-relative" style="top: -20px;">
+                <div class="col px-0">
+                    <a data-link href="/transfer"  class="position-relative text-decoration-none" style="top: -20px;">
                         <button class="btn btn-warning rounded-circle shadow-lg d-flex align-items-center justify-content-center mx-auto border-4 border-white" 
                                 style="width: 55px; height: 55px; background-color: #f68b1e; color: white;">
                             <i class="bi bi-send-fill fs-4"></i>
                         </button>
                         <span class="d-block mt-1 text-dark fw-bold" style="font-size: 0.65rem;">Transfer</span>
-                    </div>
-                </a>
+                    </a>
+                </div>
 
-                <a data-link href="/crypto"  class="col px-0">
-                    <a href="#" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
+                <div class="col px-0">
+                    <a data-link href="/crypto" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
                         <i class="bi bi-currency-bitcoin fs-4"></i>
                         <span style="font-size: 0.65rem; font-weight: 600;">Crypto</span>
                     </a>
-                </a>
+                </div>
 
                 <div class="col px-0">
                     <a data-link href="/profile" class="text-decoration-none d-flex flex-column align-items-center text-muted transition">
@@ -64,6 +64,5 @@ export function Header(){
         transform: scale(0.9);
     }
 </style>
-
     `
 }

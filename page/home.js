@@ -1,26 +1,40 @@
+import { company, SEO } from "../script.js";
 
 
 export function Home() {
+    SEO({
+  title: "Pygg - Secure Banking App in Nigeria",
+  description: "Send money instantly, pay bills, and manage your finances with Pygg. Fast, secure, and built for Nigerians.",
+  keywords: "Pygg, banking app Nigeria, fintech app, transfer money Nigeria",
+  image: "/upload/icon/pygg.png",
+  url: "https://pygg.com.ng"
+});
+
     return /*html*/`
     <nav class="navbar navbar-expand-lg navbar-light bg-white sticky-top shadow-sm py-3">
         <div class="container">
             <a class="navbar-brand fw-bold d-flex align-items-center" href="#" style="color: var(--jumia-dark);">
-                <span style="color: var(--jumia-orange);">J-</span>BANK
-                <span class="ms-2 badge border text-dark fw-light" style="font-size: 0.7rem;">PREMIUM</span>
+              <img src="/upload/icon/pygg.png" width="40px" height="40px" alt="pygg logo">
             </a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-                <span class="navbar-toggler-icon"></span>
-            </button>
+             <div class="d-flex gap-2">
+                <div class="d-block d-lg-none">
+                    <a data-link class="btn btn-outline-dark px-4 rounded-pill" href="/auth/">Login</a>
+                     <a data-link href="/auth/signup" class="btn btn-success px-4 rounded-pill shadow-sm">Open Account</a>
+                </div>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+             </div>
             <div class="collapse navbar-collapse" id="navbarNav">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0 fw-semibold">
-                    <li class="nav-item"><a class="nav-link px-3" href="#">Personal</a></li>
+                    <li class="nav-item"><a  class="nav-link px-3" href="#">Personal</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#">Business</a></li>
                     <li class="nav-item"><a class="nav-link px-3" href="#">Invest</a></li>
-                    <li class="nav-item px-lg-3">
-                        <a data-link class="btn btn-outline-dark px-4 rounded-pill" href="/login">Login</a>
+                    <li class="nav-item px-lg-3 d-none d-lg-block">
+                        <a data-link class="btn btn-outline-dark px-4 rounded-pill" href="/auth/">Login</a>
                     </li>
-                    <li class="nav-item">
-                        <a data-link href="/signup" class="btn btn-jumia px-4 rounded-pill shadow-sm" style="background-color: #f68b1e; color: white;">Open Account</a>
+                    <li class="nav-item d-none d-lg-block">
+                        <a data-link href="/auth/signup" class="btn btn-success px-4 rounded-pill shadow-sm">Open Account</a>
                     </li>
                 </ul>
             </div>
@@ -29,15 +43,15 @@ export function Home() {
 
     <header class="py-5" style="background: linear-gradient(180deg, #fff 0%, #fdf5ed 100%);">
         <div class="container py-5">
-            <div class="row align-items-center g-5">
+            <div class="row align-items-center g-5 p-0">
                 <div class="col-lg-6">
-                    <h1 class="display-3 fw-bold mb-4" style="line-height: 1.1;">Banking that <span style="color: #f68b1e;">moves</span> with you.</h1>
-                    <p class="lead text-muted mb-5">Experience the premium side of finance. Zero hidden fees, instant Jumia rewards, and a card that makes a statement.</p>
+                    <h1 class="display-3 fw-bold mb-4" style="line-height: 1.1;">Banking that <span class="text-success">moves</span> with you.</h1>
+                    <p class="lead text-muted mb-5">Experience the premium side of finance. Zero hidden fees, instant <span class="text-success">${company.name}</span> rewards, and a card that makes a statement.</p>
                     <div class="d-flex gap-3">
-                        <a data-link href="/member" class="btn btn-dark btn-lg px-4 py-3 shadow">Get Started Now</a>
-                        <button class="btn btn-link text-dark fw-bold text-decoration-none d-flex align-items-center">
-                            <i class="bi bi-play-circle-fill fs-3 me-2 text-warning"></i> See how it works
-                        </button>
+                        <a data-link href="/auth/signup" class="btn btn-success btn-lg px-4 py-3 shadow">Get Started Now</a>
+                        <a data-link href="/help/terms-and-conditions" class="btn btn-link text-dark fw-bold text-decoration-none d-flex align-items-center">
+                            <i class="bi bi-play-circle-fill fs-3 me-2 text-success"></i> See how it works
+                        </a>
                     </div>
                     <div class="mt-5 d-flex align-items-center gap-4 opacity-75">
                         <small class="fw-bold">TRUSTED BY</small>
@@ -46,19 +60,20 @@ export function Home() {
                         <i class="bi bi-stripe fs-4"></i>
                     </div>
                 </div>
-                <div class="col-lg-6 d-none d-md-block position-relative text-center">
+                <div class="col-lg-6 d-md-block position-relative text-center">
                     <div class="card-stack position-relative">
-                        <div class="card shadow-lg border-0 bg-dark text-white p-4 mx-auto" style="width: 350px; height: 220px; border-radius: 15px; transform: rotate(-5deg); z-index: 2;">
+                        <div class="card shadow-lg border-0  text-white p-4 mx-auto " style="background-image:linear-gradient(#00000031,#00000031), url(${company.atmLogo}); background-position: center; background-repeat: no-repeat;
+    background-size: cover;  width: 350px; height: 220px; border-radius: 15px; transform: rotate(-5deg); z-index: 2;">
                            <div class="d-flex justify-content-between">
-                               <small>J-BANK PREMIUM</small>
-                               <i class="bi bi-wifi fs-4"></i>
+                               <small class="text-success text-uppercase">${company.name}</small>
+                               <img src="${company.logo}"  width="30px" alt="logo">
                            </div>
                            <div class="mt-auto">
                                <div class="h5 mb-1" style="letter-spacing: 2px;">**** **** **** 8842</div>
-                               <small class="opacity-50">ALEX CHUKWUMA</small>
+                               <small class="opacity-50 text-white">ALEX CHUKWUMA</small>
                            </div>
                         </div>
-                        <div class="card shadow border-0  position-absolute bg-warning p-4 w-100" style="max-width: 350px; height: 220px; border-radius: 15px; top: 20px; left: 15%; transform: rotate(5deg); z-index: 1;">
+                        <div class="card shadow border-0  position-absolute bg-success p-4" style="max-width: 350px; height: 220px; border-radius: 15px; top: 20px;  left: 0; right: 0; margin: auto; transform: rotate(5deg); z-index: 1;">
                         </div>
                     </div>
                 </div>
@@ -68,13 +83,13 @@ export function Home() {
 
     <section class="py-5 bg-white">
         <div class="container py-5 text-center">
-            <h6 class="text-uppercase fw-bold" style="color: #f68b1e; letter-spacing: 2px;">Why Choose Us</h6>
+            <h6 class="text-uppercase fw-bold text-success" style="letter-spacing: 2px;">Why Choose Us</h6>
             <h2 class="fw-bold mb-5">Smart features for smart people</h2>
-            <div class="row g-4 mt-2">
+            <div class="d-lg-flex g-4 mt-2">
                 <div class="col-md-4">
-                    <div class="p-4 border-0 h-100">
-                        <div class="bg-light rounded-circle d-inline-flex p-4 mb-4">
-                            <i class="bi bi-shield-lock-fill fs-2 text-dark"></i>
+                    <div class="p-4 border-0 text-center  h-100">
+                        <div class="bg-light rounded-circle d-flex mx-auto justify-content-center align-items-center p-4 mb-4" style="width: 100px; height:100px">
+                            <i class="bi bi-shield-lock-fill fs-1 text-dark"></i>
                         </div>
                         <h4 class="fw-bold">Bank-Grade Security</h4>
                         <p class="text-muted">Multi-layered encryption and biometric locks to keep your money safe 24/7.</p>
@@ -82,8 +97,8 @@ export function Home() {
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 border-0 h-100">
-                        <div class="bg-light rounded-circle d-inline-flex p-4 mb-4 text-warning">
-                            <i class="bi bi-lightning-charge-fill fs-2" style="color: #f68b1e;"></i>
+                        <div class="bg-light rounded-circle d-flex justify-content-center align-items-center mx-auto p-4 mb-4 text-warning"  style="width: 100px; height:100px">
+                            <i class="bi bi-lightning-charge-fill fs-2 text-success"></i>
                         </div>
                         <h4 class="fw-bold">Instant Transfers</h4>
                         <p class="text-muted">Send and receive money within seconds to any local or international account.</p>
@@ -91,11 +106,11 @@ export function Home() {
                 </div>
                 <div class="col-md-4">
                     <div class="p-4 border-0 h-100">
-                        <div class="bg-light rounded-circle d-inline-flex p-4 mb-4">
+                        <div class="bg-light rounded-circle d-flex justify-content-center align-items-center mx-auto p-4 mb-4"   style="width: 100px; height:100px">
                             <i class="bi bi-gift-fill fs-2 text-dark"></i>
                         </div>
-                        <h4 class="fw-bold">Jumia Cashback</h4>
-                        <p class="text-muted">Earn 5% cashback on every purchase made via Jumia using your J-Bank card.</p>
+                        <h4 class="fw-bold">${company.name} Cashback</h4>
+                        <p class="text-muted">Earn 5% cashback on every purchase made by <span class="text-success">${company.name}</span> using your ${company.name} card.</p>
                     </div>
                 </div>
             </div>
@@ -106,10 +121,10 @@ export function Home() {
 
 <section class="py-5 bg-white">
     <div class="container py-5">
-        <div class="row align-items-center g-5">
+        <div class="d-lg-flex align-items-center">
             <div class="col-lg-6">
                 <div class="position-relative">
-                    <img src="https://images.unsplash.com/photo-1600880210830-89b65aa5d6cf?auto=format&fit=crop&w=800&q=80" 
+                    <img src="${company.aboutImg}" 
                          class="img-fluid rounded-4 shadow-lg" 
                          alt="Premium Banking Experience">
                     <div class="position-absolute bottom-0 start-0 bg-white p-4 shadow-lg rounded-4 m-3 d-none d-md-block" style="max-width: 200px;">
@@ -119,17 +134,17 @@ export function Home() {
                 </div>
             </div>
 
-            <div class="col-lg-6">
-                <h6 class="text-uppercase fw-bold mb-3" style="color: #f68b1e; letter-spacing: 2px;">Our Story</h6>
+            <div class="col-lg-6 px-3">
+                <h6 class="text-uppercase fw-bold mb-3 text-success" style="letter-spacing: 2px;">Our Story</h6>
                 <h2 class="display-5 fw-bold mb-4">Redefining the <span style="color: var(--jumia-dark);">Premium</span> Standard.</h2>
                 <p class="lead text-muted mb-4">
-                    J-Bank was born from a simple idea: Banking should be as seamless as your favorite shopping experience. 
+                    ${company.name} was born from a simple idea: Banking should be as seamless as your favorite shopping experience. 
                 </p>
                 <p class="text-muted mb-5">
-                    We've combined Jumia's deep understanding of digital ecosystems with world-class financial security. Our mission is to provide high-net-worth individuals and growing businesses with tools that don't just store money, but accelerate wealth.
+                    We've combined ${company.name} deep understanding of digital ecosystems with world-class financial security. Our mission is to provide high-net-worth individuals and growing businesses with tools that don't just store money, but accelerate wealth.
                 </p>
 
-                <div class="row g-4">
+                <div class="row p-0 g-4">
                     <div class="col-6">
                         <div class="d-flex align-items-center">
                             <h3 class="fw-bold mb-0 me-2">2M+</h3>
@@ -145,7 +160,7 @@ export function Home() {
                 </div>
 
                 <div class="mt-5">
-                    <button class="btn btn-outline-dark rounded-pill px-4 py-2 fw-bold">
+                    <button class="btn btn-outline-success rounded-pill px-4 py-2 fw-bold">
                         Read Annual Report 2026 <i class="bi bi-file-earmark-pdf ms-2"></i>
                     </button>
                 </div>
@@ -155,8 +170,8 @@ export function Home() {
 </section>
 
 <div class="container">
-    <div class="row g-0 rounded-4 overflow-hidden shadow-sm border">
-        <div class="col-md-4 bg-dark text-white p-4 text-center">
+    <div class="d-lg-flex g-0 rounded-4 overflow-hidden shadow-sm border">
+        <div class="col-md-4 bg-success text-white p-4 text-center">
             <h5 class="fw-bold mb-1">Our Mission</h5>
             <p class="small opacity-75 mb-0">Democratizing premium wealth management.</p>
         </div>
@@ -165,7 +180,7 @@ export function Home() {
             <p class="small text-muted mb-0">To be Africa's #1 digital private bank by 2030.</p>
         </div>
         <div class="col-md-4 bg-white p-4 text-center">
-            <h5 class="fw-bold mb-1" style="color: #f68b1e;">Our Values</h5>
+            <h5 class="fw-bold mb-1 text-success">Our Values</h5>
             <p class="small text-muted mb-0">Integrity, Innovation, and Impact.</p>
         </div>
     </div>
@@ -174,9 +189,9 @@ export function Home() {
 
     <section class="py-5 bg-light" id="contact">
     <div class="container py-5">
-        <div class="row g-5 align-items-center">
+        <div class="row p-0 g-5 align-items-center">
             <div class="col-lg-5">
-                <h6 class="text-uppercase fw-bold mb-3" style="color: #f68b1e; letter-spacing: 2px;">Contact Us</h6>
+                <h6 class="text-uppercase fw-bold mb-3 text-success" style=" letter-spacing: 2px;">Contact Us</h6>
                 <h2 class="display-6 fw-bold mb-4">We're here to help you grow.</h2>
                 <p class="text-muted mb-5">Have questions about our premium plans or need technical support? Reach out to our 24/7 dedicated concierge team.</p>
                 
@@ -214,7 +229,7 @@ export function Home() {
             <div class="col-lg-7">
                 <div class="card border-0 shadow-lg p-4 p-md-5 rounded-4">
                     <form>
-                        <div class="row g-3">
+                        <div class="row p-0 g-3">
                             <div class="col-md-6">
                                 <label class="form-label small fw-bold text-uppercase">Full Name</label>
                                 <input type="text" class="form-control form-control-lg bg-light border-0" placeholder="John Doe">
@@ -257,7 +272,7 @@ export function Home() {
             <h2 class="display-6 fw-bold">Financial Solutions for Every Need</h2>
         </div>
 
-        <div class="row g-4 mb-5">
+        <div class="row p-0 g-4 mb-5">
             <div class="col-md-4">
                 <div class="card card-premium p-4 border-0 shadow-sm h-100 bg-light">
                     <i class="bi bi-cash-coin fs-1 text-warning mb-3"></i>
@@ -286,7 +301,7 @@ export function Home() {
             <p class="text-muted">Save daily for 350 days and secure your family's festive supplies.</p>
         </div>
 
-        <div class="row g-4">
+        <div class="row p-0 g-4">
             <div class="col-lg-3 col-md-6">
                 <div class="card border-0 shadow-sm h-100 rounded-4 overflow-hidden border-top border-warning border-5">
                     <div class="card-body p-4">
@@ -374,7 +389,7 @@ export function Home() {
 
 <section class="py-5 bg-light" id="digital-services">
     <div class="container py-5">
-        <div class="row g-5 align-items-center">
+        <div class="row p-0 g-5 align-items-center">
             
             <div class="col-lg-6 order-2 order-lg-1">
                 <div class="position-relative">
@@ -415,7 +430,7 @@ export function Home() {
                 <h2 class="display-6 fw-bold mb-4">Bills and payments, <span class="text-warning">simplified.</span></h2>
                 <p class="text-muted mb-4">From global shopping to local utilities, manage everything from one dashboard with zero downtime.</p>
                 
-                <div class="row g-4">
+                <div class="row p-0 g-4">
                     <div class="col-md-6">
                         <div class="d-flex align-items-start">
                             <div class="bg-white p-2 rounded shadow-sm me-3">
@@ -485,14 +500,14 @@ export function Home() {
 </style>
 <section class="py-5 bg-white" id="digital-assets">
     <div class="container py-5">
-        <div class="row g-5 align-items-center">
+        <div class="row p-0  g-5 align-items-center">
             
             <div class="col-lg-6">
                 <h6 class="text-uppercase fw-bold mb-3" style="color: #f68b1e; letter-spacing: 2px;">Exchange & Assets</h6>
                 <h2 class="display-6 fw-bold mb-4">Trade Assets at <span class="text-warning">Real-Time</span> Rates.</h2>
                 <p class="text-muted mb-4">Whether it's Bitcoin, Ethereum, or a stray Amazon Gift Card, J-Bank Premium provides a secure bridge between your digital assets and your local bank account.</p>
                 
-                <div class="row g-3 mt-2">
+                <div class="row p-0 g-3 mt-2">
                     <div class="col-sm-6">
                         <div class="p-3 border rounded-3 bg-light">
                             <div class="d-flex align-items-center mb-2">
@@ -587,7 +602,7 @@ export function Home() {
 
 <section class="py-5 bg-white">
     <div class="container py-5">
-        <div class="row align-items-center g-5">
+        <div class="row p-0 align-items-center g-5">
             <div class="col-lg-5">
                 <div class="badge bg-warning-subtle text-warning px-3 py-2 mb-3 fw-bold">FOR DEVELOPERS</div>
                 <h2 class="display-6 fw-bold mb-4">Built by developers, <span style="color: #f68b1e;">for developers.</span></h2>
@@ -655,7 +670,7 @@ export function Home() {
 
     <footer class="py-5 text-white" style="background-color: #282828;">
         <div class="container">
-            <div class="row">
+            <div class="row p-0">
                 <div class="col-md-4 mb-4">
                     <h5 class="fw-bold mb-4"><span style="color: #f68b1e;">J-</span>BANK</h5>
                     <p class="small opacity-50">Providing premium financial solutions for the digital age. Registered and regulated by the Central Bank.</p>
